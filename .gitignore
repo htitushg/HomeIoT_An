@@ -13,6 +13,7 @@ vendor
 # misc
 .DS_Store
 *.pem
+startup-message.json
 
 # env files (can opt-in for committing if needed)
 env.ps1
