@@ -228,6 +228,44 @@
         const ws = new WebSocket("ws://localhost:8080/ws");
         ws.onmessage = (event) => {
             console.log("Received:", event.data);
+            // Parse the received JSON data
+            const devices = JSON.parse(event.data);
+
+            // Loop through the devices
+            devices.forEach(device => {
+                // Find the device element by its ID (from the received data)
+                const deviceElement = document.getElementById(device.ID);
+
+                if (deviceElement) {
+                    // Update the device name and type
+                    const deviceName = deviceElement.querySelector('.name');
+                    const deviceType = deviceElement.querySelector('.type');
+
+                    if (deviceName) {
+                        deviceName.textContent = device.Name;
+                    }
+                    if (deviceType) {
+                        deviceType.textContent = device.Type;
+                    }
+
+                    // Loop through the modules and update the module data
+                    device.Modules.forEach(module => {
+                        const validModuleId = `id-${module.ID}`;
+                        const moduleElement = deviceElement.querySelector(`#${validModuleId}`);
+                        if (moduleElement) {
+                            const moduleName = moduleElement.querySelector('.module-name');
+                            const moduleValue = moduleElement.querySelector('.module-value');
+
+                            if (moduleName) {
+                                moduleName.textContent = module.Name;
+                            }
+                            if (moduleValue) {
+                                moduleValue.textContent = module.Value;
+                            }
+                        }
+                    });
+                }
+            });
         };
 
     </script>

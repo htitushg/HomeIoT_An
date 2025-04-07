@@ -1,14 +1,18 @@
 {{define "page"}}
     <div class="home">
         {{ range .Devices }}
+            <div id="{{ .ID }}">
             <div class="name">{{ .Name }}</div>
             <div class="type">{{ .Type }}</div>
             {{ range .Modules}}
                 <div class="module">
+                    <div id="id-{{ .ID }}">
                     <div class="module-name">{{ .Name }}</div>
                     <div class="module-value">{{ .Value }}</div>
+                    </div>
                 </div>
             {{ end }}
+            </div>
         {{ end }}
     </div>
 {{end}}
