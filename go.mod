@@ -9,13 +9,14 @@ require (
 	github.com/eclipse/paho.mqtt.golang v1.5.0
 	github.com/go-mail/mail/v2 v2.3.0
 	github.com/go-playground/form/v4 v4.2.1
+	github.com/gorilla/websocket v1.5.3
 	github.com/justinas/nosurf v1.1.1
+	github.com/lib/pq v1.10.2
 	gorm.io/driver/postgres v1.5.11
 	gorm.io/gorm v1.25.12
 )
 
 require (
-	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
 	github.com/jackc/pgx/v5 v5.7.2 // indirect

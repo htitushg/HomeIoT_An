@@ -217,13 +217,18 @@
         searchTag.addEventListener('click', () => searchInput.focus());
 
 
-{{/*####################################*/}}
-{{/*    Remove CSRF token from URL      */}}
-{{/*####################################*/}}
+        {{/*####################################*/}}
+        {{/*    Remove CSRF token from URL      */}}
+        {{/*####################################*/}}
 
         if (window.location.href.includes('csrf_token')) {
             window.history.pushState({}, "{{ .Title }}", window.location.href.replace(/csrf_token[^&]+&?/, ''));
         }
+
+        const ws = new WebSocket("ws://localhost:8080/ws");
+        ws.onmessage = (event) => {
+            console.log("Received:", event.data);
+        };
 
     </script>
 

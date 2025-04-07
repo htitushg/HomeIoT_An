@@ -136,6 +136,9 @@ func main() {
 		wg:             new(sync.WaitGroup),
 	}
 
+	// Subscription to MQTT channels
+	app.Models.Data.Sub(app.config.broker.subscriptionChannel)
+
 	// Running the server
 	err = app.serve()
 	if err != nil {
