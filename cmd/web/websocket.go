@@ -74,10 +74,11 @@ func (app *application) handleWebSocket(w http.ResponseWriter, r *http.Request) 
 
 	// Listen for client messages and handle disconnection
 	for {
-		_, _, err := conn.ReadMessage()
+		_, message, err := conn.ReadMessage()
 		if err != nil {
 			break
 		}
+		log.Printf("Received message: %s\n", message)
 	}
 
 	// When the client disconnects, close the stop channel to notify the goroutine
